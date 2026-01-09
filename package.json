@@ -19,9 +19,12 @@
     "vite": "^5.4.0"
   },
   "dependencies": {
+    "@crayonai/react-core": "^0.7.6",
     "@crayonai/react-ui": "0.9.11",
-    "lucide-react": "^0.462.0",
+    "@thesysai/genui-sdk": "^0.7.15",
+    "lucide-react": "^0.469.0",
     "react": "^18.3.0",
-    "react-dom": "^18.3.0"
+    "react-dom": "^18.3.0",
+    "sonner": "^2.0.7"
   }
 }

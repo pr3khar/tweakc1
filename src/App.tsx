@@ -16,7 +16,7 @@ function App({ theme, setTheme }: AppProps) {
       <Header theme={theme} setTheme={setTheme} />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar value={sidebarTab} onValueChange={setSidebarTab} />
-        <MainPanel />
+        <MainPanel mode={theme} />
       </div>
     </div>
   );
