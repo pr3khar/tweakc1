@@ -1,6 +1,7 @@
 // Top 100 Google Fonts by popularity
 export const POPULAR_FONTS = {
   "sans-serif": [
+    "Inter",
     "Roboto",
     "Open Sans",
     "Lato",
@@ -15,7 +16,6 @@ export const POPULAR_FONTS = {
     "Roboto Condensed",
     "Mukta",
     "Work Sans",
-    "Inter",
     "Dosis",
     "Rubik",
     "Barlow",
