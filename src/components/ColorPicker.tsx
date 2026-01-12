@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { ColorPickerProps } from "../types/theme";
-import { parseColor, toRGBA } from "../utils/colorParser";
+import { parseColor } from "../utils/colorParser";
 
 // Helper to convert any CSS color to hex
 function rgbaToHex(color: string): string {
   const { r, g, b } = parseColor(color);
-  
+
   return (
     "#" +
     [r, g, b]

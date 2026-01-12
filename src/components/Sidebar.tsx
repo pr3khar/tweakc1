@@ -6,7 +6,6 @@ import { FontControls } from "./FontControls";
 import { SpacingControls } from "./SpacingControls";
 import { StrokeControls } from "./StrokeControls";
 import { ChatControls } from "./ChatControls";
-import { ShadowControls } from "./ShadowControls";
 import { PresetSelector } from "./PresetSelector";
 import { GenerateControls } from "./GenerateControls";
 import { CssOverrideControls } from "./CssOverrideControls";
@@ -56,7 +55,7 @@ export function Sidebar({
   onChartColorChange,
   onStrokeColorChange,
   onChatColorChange,
-  onShadowChange,
+  // onShadowChange,
   onFontChange,
   onLetterSpacingChange,
   onFontWeightChange,

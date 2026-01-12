@@ -74,7 +74,7 @@ export function Header({
           borderColor: "var(--border-primary)",
         }}
       >
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
           <div className="flex items-center">
             <span className="flex items-center justify-center">
               <Sparkles size={16} />
@@ -86,6 +86,14 @@ export function Header({
           <SwitchItem
             checked={theme === "dark"}
             onChange={(checked) => setTheme(checked ? "dark" : "light")}
+          />
+
+          <ActionButtons
+            onUndo={onUndo}
+            onRedo={onRedo}
+            canUndo={canUndo}
+            canRedo={canRedo}
+            onReset={onReset}
           />
           <div className="flex items-center gap-1">
             <Button
