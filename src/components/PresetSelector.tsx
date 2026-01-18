@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -9,6 +9,7 @@ import {
 } from "@crayonai/react-ui";
 import { getPresetNames, getPreset } from "../utils/themePresets";
 import { ThemeCustomization } from "../types/theme";
+import { loadTheme, saveThemePreference, type ThemeName } from "../themes/themeManager";
 
 interface PresetSelectorProps {
   onPresetSelect: (presetName: string) => void;
@@ -34,16 +35,24 @@ export function PresetSelector({
       Object.keys(customization.fonts).length === 0 &&
       !customization.shadow &&
       !customization.spacing.base &&
-      !customization.borderRadius.base &&
-      !customization.letterSpacing.base;
+      !customization.borderRadius.base;
 
     if (isEmpty) {
       setSelectedPreset("default");
     }
   }, [customization]);
 
-  const handleChange = (value: string) => {
+  const handleChange = async (value: string) => {
     setSelectedPreset(value);
+    
+    // Load theme CSS
+    try {
+      await loadTheme(value as ThemeName);
+      saveThemePreference(value as ThemeName);
+    } catch (error) {
+      console.error('Failed to load theme:', error);
+    }
+    
     if (value === "default") {
       onReset();
     } else {
@@ -52,23 +61,7 @@ export function PresetSelector({
   };
 
   return (
-    <div
-      style={{
-        padding: "16px",
-        borderBottom: "1px solid var(--crayon-stroke-emphasis)",
-      }}
-    >
-      <label
-        style={{
-          display: "block",
-          fontSize: "14px",
-          fontWeight: "500",
-          marginBottom: "8px",
-          color: "var(--crayon-primary-text)",
-        }}
-      >
-        Theme Preset
-      </label>
+    <div className="preset-selector">
       <Select value={selectedPreset} onValueChange={handleChange}>
         <SelectTrigger size="md" style={{ width: "100%" }}>
           <SelectValue placeholder="Select a preset..." />
