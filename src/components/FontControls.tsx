@@ -355,6 +355,7 @@ export function FontControls({
             <span className="font-size-slider__value">{currentFontSize}px</span>
           </div>
             <Slider
+            variant="continuous"
             value={[currentFontSize]}
             onValueChange={(values) => onFontSizeChange(values[0])}
             min={12}

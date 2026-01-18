@@ -84,8 +84,6 @@ export function ColorPicker({
   const effectiveValue = value || defaultColor;
   const hexValue = effectiveValue ? rgbaToHex(effectiveValue) : "#000000";
   const displayValue = value ? formatColorDisplay(inputValue) : formatColorDisplay(defaultColor);
-  const isUsingDefault = !value && !!defaultColor;
-  const isFilled = !!value && value.trim() !== "";
 
   // Sync input value when external value changes
   useEffect(() => {

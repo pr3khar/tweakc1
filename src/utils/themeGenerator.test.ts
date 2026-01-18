@@ -210,7 +210,7 @@ describe('generateFontVariables', () => {
       {
         body: 'Inter',
       },
-      0.32, // 0.32px / 16 = 0.02em
+      { body: 0.32 }, // 0.32px / 16 = 0.02em
       {}
     );
 
@@ -224,7 +224,7 @@ describe('generateFontVariables', () => {
       {
         body: 'Inter',
       },
-      -0.16, // -0.16px / 16 = -0.01em
+      { body: -0.16 }, // -0.16px / 16 = -0.01em
       { regular: 300, medium: 600 }
     );
 

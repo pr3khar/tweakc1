@@ -5,6 +5,31 @@ import { parseColor } from "./colorParser";
 // Alias for backwards compatibility
 const parseRGBA = parseColor;
 
+// Export the default color engine for tests
+export const defaultColorEngine = colorEngines.default;
+
+// Extended colors type for backwards compatibility with legacy presets
+type ExtendedColors = ThemeCustomization["colors"] & {
+  backgroundSecondary?: string;
+  backgroundTertiary?: string;
+  containerHover?: string;
+  sunk?: string;
+  elevated?: string;
+  overlay?: string;
+  highlightSubtle?: string;
+  primaryHover?: string;
+  primaryPressed?: string;
+  primaryDisabled?: string;
+  neutralDefault?: string;
+  neutralHover?: string;
+  neutralPressed?: string;
+  neutralDisabled?: string;
+  textPrimaryInverse?: string;
+  textDisabled?: string;
+  dangerHover?: string;
+  dangerPressed?: string;
+};
+
 // Generate semantic colors using the selected engine
 export function generateSemanticColors(
   colors: ThemeCustomization["colors"],
@@ -12,129 +37,131 @@ export function generateSemanticColors(
   mode: "light" | "dark"
 ): Record<string, string> {
   const result: Record<string, string> = {};
+  // Cast to extended type to support legacy properties
+  const extColors = colors as ExtendedColors;
 
   // Background fills
-  if (colors.background) {
-    result.backgroundFills = colors.background;
-    result.chatContainerBg = colors.background;
+  if (extColors.background) {
+    result.backgroundFills = extColors.background;
+    result.chatContainerBg = extColors.background;
   }
-  if (colors.backgroundSecondary) {
-    result.backgroundSecondary = colors.backgroundSecondary;
+  if (extColors.backgroundSecondary) {
+    result.backgroundSecondary = extColors.backgroundSecondary;
   }
-  if (colors.backgroundTertiary) {
-    result.backgroundTertiary = colors.backgroundTertiary;
+  if (extColors.backgroundTertiary) {
+    result.backgroundTertiary = extColors.backgroundTertiary;
   }
-  if (colors.container) {
-    result.containerFills = colors.container;
-    result.chatAssistantResponseBg = colors.container;
+  if (extColors.container) {
+    result.containerFills = extColors.container;
+    result.chatAssistantResponseBg = extColors.container;
   }
-  if (colors.containerHover) {
-    result.containerHoverFills = colors.containerHover;
-  } else if (colors.container) {
-    result.containerHoverFills = engine.generateHover(colors.container, mode);
+  if (extColors.containerHover) {
+    result.containerHoverFills = extColors.containerHover;
+  } else if (extColors.container) {
+    result.containerHoverFills = engine.generateHover(extColors.container, mode);
   }
-  if (colors.sunk) {
-    result.sunkFills = colors.sunk;
+  if (extColors.sunk) {
+    result.sunkFills = extColors.sunk;
   }
-  if (colors.elevated) {
-    result.elevatedFills = colors.elevated;
+  if (extColors.elevated) {
+    result.elevatedFills = extColors.elevated;
   }
-  if (colors.overlay) {
-    result.overlayFills = colors.overlay;
+  if (extColors.overlay) {
+    result.overlayFills = extColors.overlay;
   }
-  if (colors.highlightSubtle) {
-    result.highlightSubtle = colors.highlightSubtle;
+  if (extColors.highlightSubtle) {
+    result.highlightSubtle = extColors.highlightSubtle;
   }
 
   // Interactive accent colors
-  if (colors.primary) {
-    result.interactiveAccent = colors.primary;
+  if (extColors.primary) {
+    result.interactiveAccent = extColors.primary;
   }
-  if (colors.primaryHover) {
-    result.interactiveAccentHover = colors.primaryHover;
-  } else if (colors.primary) {
-    result.interactiveAccentHover = engine.generateHover(colors.primary, mode);
+  if (extColors.primaryHover) {
+    result.interactiveAccentHover = extColors.primaryHover;
+  } else if (extColors.primary) {
+    result.interactiveAccentHover = engine.generateHover(extColors.primary, mode);
   }
-  if (colors.primaryPressed) {
-    result.interactiveAccentPressed = colors.primaryPressed;
-  } else if (colors.primary) {
-    result.interactiveAccentPressed = engine.generatePressed(colors.primary, mode);
+  if (extColors.primaryPressed) {
+    result.interactiveAccentPressed = extColors.primaryPressed;
+  } else if (extColors.primary) {
+    result.interactiveAccentPressed = engine.generatePressed(extColors.primary, mode);
   }
-  if (colors.primaryDisabled) {
-    result.interactiveAccentDisabled = colors.primaryDisabled;
-  } else if (colors.primary) {
-    result.interactiveAccentDisabled = engine.generateDisabled(colors.primary, mode);
+  if (extColors.primaryDisabled) {
+    result.interactiveAccentDisabled = extColors.primaryDisabled;
+  } else if (extColors.primary) {
+    result.interactiveAccentDisabled = engine.generateDisabled(extColors.primary, mode);
   }
 
   // Interactive neutral colors
-  if (colors.neutralDefault) {
-    result.neutralDefault = colors.neutralDefault;
+  if (extColors.neutralDefault) {
+    result.neutralDefault = extColors.neutralDefault;
   }
-  if (colors.neutralHover) {
-    result.neutralHover = colors.neutralHover;
+  if (extColors.neutralHover) {
+    result.neutralHover = extColors.neutralHover;
   }
-  if (colors.neutralPressed) {
-    result.neutralPressed = colors.neutralPressed;
+  if (extColors.neutralPressed) {
+    result.neutralPressed = extColors.neutralPressed;
   }
-  if (colors.neutralDisabled) {
-    result.neutralDisabled = colors.neutralDisabled;
+  if (extColors.neutralDisabled) {
+    result.neutralDisabled = extColors.neutralDisabled;
   }
 
   // Text colors
-  if (colors.textPrimary) {
-    result.primaryText = colors.textPrimary;
-    result.chatAssistantResponseText = colors.textPrimary;
-    result.chatUserResponseText = colors.textPrimary;
+  if (extColors.textPrimary) {
+    result.primaryText = extColors.textPrimary;
+    result.chatAssistantResponseText = extColors.textPrimary;
+    result.chatUserResponseText = extColors.textPrimary;
   }
-  if (colors.textSecondary) {
-    result.secondaryText = colors.textSecondary;
+  if (extColors.textSecondary) {
+    result.secondaryText = extColors.textSecondary;
   }
-  if (colors.textPrimaryInverse) {
-    result.primaryTextInverse = colors.textPrimaryInverse;
+  if (extColors.textPrimaryInverse) {
+    result.primaryTextInverse = extColors.textPrimaryInverse;
   }
-  if (colors.textDisabled) {
-    result.disabledText = colors.textDisabled;
+  if (extColors.textDisabled) {
+    result.disabledText = extColors.textDisabled;
   }
-  if (colors.linkText) {
-    result.linkText = colors.linkText;
+  if (extColors.linkText) {
+    result.linkText = extColors.linkText;
   }
 
   // Status colors - Danger
-  if (colors.danger) {
-    result.dangerFills = engine.generateSubtle(colors.danger, mode);
-    result.dangerText = colors.danger;
-    result.dangerPrimaryText = colors.danger;
-    result.interactiveDestructive = engine.generateSubtle(colors.danger, mode);
+  if (extColors.danger) {
+    result.dangerFills = engine.generateSubtle(extColors.danger, mode);
+    result.dangerText = extColors.danger;
+    result.dangerPrimaryText = extColors.danger;
+    result.interactiveDestructive = engine.generateSubtle(extColors.danger, mode);
   }
-  if (colors.dangerHover) {
-    result.interactiveDestructiveHover = colors.dangerHover;
-  } else if (colors.danger) {
-    result.interactiveDestructiveHover = engine.generateHover(colors.danger, mode);
+  if (extColors.dangerHover) {
+    result.interactiveDestructiveHover = extColors.dangerHover;
+  } else if (extColors.danger) {
+    result.interactiveDestructiveHover = engine.generateHover(extColors.danger, mode);
   }
-  if (colors.dangerPressed) {
-    result.interactiveDestructivePressed = colors.dangerPressed;
-  } else if (colors.danger) {
-    result.interactiveDestructivePressed = engine.generatePressed(colors.danger, mode);
+  if (extColors.dangerPressed) {
+    result.interactiveDestructivePressed = extColors.dangerPressed;
+  } else if (extColors.danger) {
+    result.interactiveDestructivePressed = engine.generatePressed(extColors.danger, mode);
   }
 
   // Status colors - Success
-  if (colors.success) {
-    result.successFills = engine.generateSubtle(colors.success, mode);
-    result.successText = colors.success;
-    result.successPrimaryText = colors.success;
+  if (extColors.success) {
+    result.successFills = engine.generateSubtle(extColors.success, mode);
+    result.successText = extColors.success;
+    result.successPrimaryText = extColors.success;
   }
 
   // Status colors - Info
-  if (colors.info) {
-    result.infoFills = engine.generateSubtle(colors.info, mode);
-    result.infoText = colors.info;
-    result.infoPrimaryText = colors.info;
+  if (extColors.info) {
+    result.infoFills = engine.generateSubtle(extColors.info, mode);
+    result.infoText = extColors.info;
+    result.infoPrimaryText = extColors.info;
   }
 
   // Status colors - Alert
-  if (colors.alert) {
-    result.alertFills = engine.generateSubtle(colors.alert, mode);
-    result.alertPrimaryText = colors.alert;
+  if (extColors.alert) {
+    result.alertFills = engine.generateSubtle(extColors.alert, mode);
+    result.alertPrimaryText = extColors.alert;
   }
 
   return result;

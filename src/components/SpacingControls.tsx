@@ -342,8 +342,8 @@ function IndividualValueControl({
 export function SpacingControls({
   spacing,
   borderRadius,
-  onSpacingChange,
-  onBorderRadiusChange,
+  onSpacingChange: _onSpacingChange,
+  onBorderRadiusChange: _onBorderRadiusChange,
   onIndividualSpacingChange,
   onIndividualBorderRadiusChange,
   onApplyBorderRadiusPreset,

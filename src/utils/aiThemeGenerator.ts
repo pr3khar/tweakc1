@@ -63,6 +63,7 @@ function deepMerge(
     fonts: { ...current.fonts, ...updates.fonts },
     fontWeight: { ...current.fontWeight, ...updates.fontWeight },
     letterSpacing: { ...current.letterSpacing, ...updates.letterSpacing },
+    fontSize: { ...current.fontSize, ...updates.fontSize },
     spacing: { ...current.spacing, ...updates.spacing },
     borderRadius: { ...current.borderRadius, ...updates.borderRadius },
   };

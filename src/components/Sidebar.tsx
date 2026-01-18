@@ -72,7 +72,7 @@ export function Sidebar({
   onValueChange,
   customization,
   currentMode,
-  onColorChange,
+  onColorChange: _onColorChange,
   onFillChange,
   onTextChange,
   onInteractiveChange,
