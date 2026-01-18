@@ -1,7 +1,6 @@
 import { ThemePreset } from "./types";
 
-// Common custom CSS for Grok theme
-const commonCustomCss = `
+const lightCustomCss = `
 .crayon-shell-thread-composer__input {
   width: 100%;
 }
@@ -15,24 +14,49 @@ const commonCustomCss = `
   opacity: 0;
 }
 
-.crayon-shell-thread-message-user__content {
-  border-radius: 16px 0px 16px 16px;
-}
-`;
-
-const lightCustomCss = `${commonCustomCss}
 .crayon-shell-thread-composer__input-wrapper {
-  display: flex;
-  flex-direction: column;
+  padding: 8px;
+  border-radius: 999px;
+  padding-left: 16px;
   background-color: rgba(0,0,0,0.03);
 }
+
+.crayon-shell-thread-composer__input-wrapper .crayon-icon-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+}
 `;
 
-const darkCustomCss = `${commonCustomCss}
+const darkCustomCss = `
+.crayon-shell-thread-composer__input {
+  width: 100%;
+}
+  
+.crayon-card {
+  border: none;
+  background: transparent;
+}
+
+.crayon-shell-thread-message-assistant__logo {
+  opacity: 0;
+}
+
 .crayon-shell-thread-composer__input-wrapper {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(255,255,255,0.05);
+  padding: 8px;
+  border-radius: 999px;
+  padding-left: 16px;
+  background-color: rgba(255,255,255,0.03);
+}
+
+.crayon-shell-thread-composer__input-wrapper .crayon-icon-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+}
+
+.crayon-shell-thread-message-user__content {
+  border-radius: 20px 20px 0px 20px;
 }
 `;
 
@@ -40,67 +64,129 @@ export const twitterPreset: ThemePreset = {
   name: "Grok",
   config: {
     light: {
-      fills: {},
-      text: {},
-      interactive: {},
+      // Fills (from Vercel light)
+      fills: {
+        backgroundFills: "#fefefe",
+        containerFills: "#fefefe",
+        overlayFills: "rgba(0, 0, 0, 0.5)",
+        sunkFills: "rgba(0, 0, 0, 0.04)",
+        containerHoverFills: "rgba(0, 0, 0, 0.04)",
+        dangerFills: "#fff0ee",
+        successFills: "#e8fff0",
+        infoFills: "#f3f2ff",
+        elevatedFills: "rgba(255, 255, 255, 0.2)",
+        alertFills: "#fff8f1",
+        sunkBgFills: "rgba(0, 0, 0, 0.04)",
+        invertedFills: "#101010",
+        highlightSubtle: "rgba(0, 0, 0, 0.02)",
+      },
+      // Text (from Vercel light)
+      text: {
+        brandText: "rgba(255, 255, 255, 1)",
+        brandSecondaryText: "rgba(255,255,255,0.5)",
+        primaryText: "rgba(0,0,0,1)",
+        secondaryText: "rgba(0,0,0,0.5)",
+        disabledText: "rgba(0,0,0,0.3)",
+        dangerText: "#a61d0e",
+        successText: "#007a54",
+        linkText: "rgba(71,85,245,1)",
+        infoText: "rgba(71,85,245,1)",
+        alertText: "#9a6700",
+        accentPrimaryText: "rgba(255, 255, 255, 1)",
+        accentSecondaryText: "rgba(255,255,255,0.5)",
+        accentDisabledText: "rgba(255,255,255,0.3)",
+      },
+      // Interactive (from Vercel light)
+      interactive: {
+        interactiveDefault: "rgba(255, 255, 255, 0.02)",
+        interactiveHover: "rgba(0, 0, 0, 0.04)",
+        interactivePressed: "rgba(0, 0, 0, 0.06)",
+        interactiveDisabled: "rgba(255, 255, 255, 0.02)",
+        interactiveAccent: "rgba(0,0,0,1)",
+        interactiveAccentHover: "rgba(0,0,0,0.7)",
+        interactiveAccentPressed: "rgba(0,0,0,0.7)",
+        interactiveAccentDisabled: "rgba(0,0,0,0.4)",
+        interactiveDestructive: "#fff0ee",
+        interactiveDestructiveHover: "#ffe9e5",
+        interactiveDestructivePressed: "#ffded8",
+        interactiveDestructiveDisabled: "#fff0ee",
+      },
+      // Legacy colors (from Vercel light)
       colors: {
-        background: "oklch(0.985 0 0)",
-        container: "oklch(1 0 0)",
-        primary: "oklch(0.64 0.19 234)",
-        textPrimary: "oklch(0.15 0.01 250)",
-        textSecondary: "oklch(0.43 0.01 250)",
-        linkText: "oklch(0.64 0.19 234)",
-        danger: "oklch(0.52 0.24 25)",
-        success: "oklch(0.50 0.13 155)",
-        info: "oklch(0.64 0.19 234)",
-        alert: "oklch(0.70 0.14 75)",
+        background: "#fefefe",
+        container: "#fefefe",
+        primary: "rgba(0,0,0,1)",
+        textPrimary: "rgba(0,0,0,1)",
+        textSecondary: "rgba(0,0,0,0.5)",
+        linkText: "rgba(71,85,245,1)",
+        danger: "#a61d0e",
+        success: "#007a54",
+        info: "rgba(71,85,245,1)",
+        alert: "#9a6700",
       },
       chartColors: {
-        primary: "oklch(0.64 0.19 234)",
+        primary: "rgba(0,0,0,1)",
       },
+      // Strokes (from Vercel light)
       strokeColors: {
-        default: "rgba(38,38,38,0.08)",
-        interactiveEl: "rgba(38,38,38,0.16)",
-        interactiveElHover: "rgba(38,38,38,0.24)",
-        interactiveElSelected: "rgba(38,38,38,0.32)",
-        emphasis: "rgba(38,38,38,0.2)",
-        accent: "rgba(29,155,240,0.2)",
-        accentEmphasis: "rgba(29,155,240,0.4)",
-        info: "#e8f5fd",
-        infoEmphasis: "#1d9bf0",
-        alert: "#fff9e6",
-        alertEmphasis: "#f5a623",
-        success: "#e6f9ed",
-        successEmphasis: "#00ba7c",
-        danger: "#ffeef0",
-        dangerEmphasis: "#f4212e",
+        default: "rgba(0, 0, 0, 0.06)",
+        interactiveEl: "rgba(0, 0, 0, 0.1)",
+        interactiveElHover: "rgba(0, 0, 0, 0.3)",
+        interactiveElSelected: "rgba(0, 0, 0, 0.5)",
+        emphasis: "rgba(0, 0, 0, 0.2)",
+        accent: "rgba(255, 255, 255, 0.04)",
+        accentEmphasis: "rgba(255, 255, 255, 0.08)",
+        info: "#ececff",
+        infoEmphasis: "#5879ff",
+        alert: "#fff2d9",
+        alertEmphasis: "#d9ae12",
+        success: "#cdffe3",
+        successEmphasis: "#0ab17d",
+        danger: "#ffe9e5",
+        dangerEmphasis: "#eb4b35",
       },
+      // Chat colors (from Vercel light)
       chatColors: {
-        containerBg: "oklch(0.985 0 0)",
-        assistantBg: "oklch(0.97 0 0)",
-        assistantText: "oklch(0.15 0.01 250)",
-        userBg: "oklch(0.64 0.19 234)",
-        userText: "oklch(1 0 0)",
+        containerBg: "#fefefe",
+        assistantBg: "#fefefe",
+        assistantText: "rgba(0,0,0,1)",
+        userBg: "rgba(230,230,230,1)",
+        userText: "rgba(0,0,0,1)",
       },
+      // Shadow (from Vercel light)
       shadow: {
-        color: "oklch(0.15 0.01 250)",
-        opacity: 0.06,
-        blur: 16,
+        color: "rgba(0,0,0,1)",
+        opacity: 0.03,
+        blur: 4,
         spread: 0,
         offsetX: 0,
-        offsetY: 2,
+        offsetY: 1,
       },
       colorEngine: "default",
       fonts: {
-        body: "Inter",
-        heading: "Inter",
-        mono: "JetBrains Mono",
+        body: "Geist",
+        heading: "Geist",
+        mono: "Geist",
       },
       fontWeight: {},
       letterSpacing: {},
-      fontSize: {},
-      spacing: {},
-      // Border radius (same as dark mode)
+      fontSize: {
+        base: 15,
+      },
+      // Spacing (from Vercel light)
+      spacing: {
+        spacing0: 0,
+        spacing3xs: 2,
+        spacing2xs: 4,
+        spacingXs: 6,
+        spacingS: 8,
+        spacingM: 12,
+        spacingL: 18,
+        spacingXl: 24,
+        spacing2xl: 36,
+        spacing3xl: 48,
+      },
+      // Border radius (from Vercel light)
       borderRadius: {
         rounded0: 0,
         rounded3xs: 1,
@@ -113,11 +199,12 @@ export const twitterPreset: ThemePreset = {
         rounded2xl: 14,
         rounded3xl: 16,
         rounded4xl: 20,
+        roundedClickable: 10,
       },
       customCss: lightCustomCss,
     },
     dark: {
-      // Fills (from Vercel dark)
+      // Fills
       fills: {
         backgroundFills: "#050505",
         containerFills: "#0a0a0a",
@@ -133,23 +220,23 @@ export const twitterPreset: ThemePreset = {
         invertedFills: "#f1f1f1",
         highlightSubtle: "rgba(255,255,255,0.03)",
       },
-      // Text (from Vercel dark)
+      // Text
       text: {
         brandText: "rgba(0, 0, 0, 1)",
         brandSecondaryText: "rgba(0, 0, 0, 0.7)",
+        accentPrimaryText: "rgba(0, 0, 0, 1)",
+        accentSecondaryText: "rgba(0, 0, 0, 0.7)",
         primaryText: "#f5f5f5",
         secondaryText: "#8c8c8c",
         disabledText: "#525252",
+        alertText: "#fbbf24",
+        accentDisabledText: "rgba(0, 0, 0, 0.4)",
         dangerText: "#f87171",
         successText: "#4ade80",
         linkText: "#818cf8",
         infoText: "#60a5fa",
-        alertText: "#fbbf24",
-        accentPrimaryText: "rgba(0, 0, 0, 1)",
-        accentSecondaryText: "rgba(0, 0, 0, 0.7)",
-        accentDisabledText: "rgba(0, 0, 0, 0.4)",
       },
-      // Interactive (from Vercel dark)
+      // Interactive
       interactive: {
         interactiveDefault: "rgba(255, 255, 255, 0.02)",
         interactiveHover: "rgba(255, 255, 255, 0.06)",
@@ -164,7 +251,7 @@ export const twitterPreset: ThemePreset = {
         interactiveDestructivePressed: "#4d201a",
         interactiveDestructiveDisabled: "#1d0d0a",
       },
-      // Legacy colors (from Vercel dark)
+      // Legacy colors
       colors: {
         background: "#050505",
         container: "#0a0a0a",
@@ -180,7 +267,7 @@ export const twitterPreset: ThemePreset = {
       chartColors: {
         primary: "#ffffff",
       },
-      // Strokes (from Vercel dark)
+      // Strokes
       strokeColors: {
         default: "rgba(255, 255, 255, 0.06)",
         interactiveEl: "rgba(255,255,255,0.15)",
@@ -198,7 +285,7 @@ export const twitterPreset: ThemePreset = {
         danger: "#2d1410",
         dangerEmphasis: "#f87171",
       },
-      // Chat colors (from Vercel dark)
+      // Chat colors
       chatColors: {
         containerBg: "#050505",
         assistantBg: "#0a0a0a",
@@ -206,11 +293,11 @@ export const twitterPreset: ThemePreset = {
         userBg: "#1a1a1a",
         userText: "#f5f5f5",
       },
-      // Shadow (from Vercel dark)
+      // Shadow
       shadow: {
         color: "rgba(0,0,0,1)",
         opacity: 0.5,
-        blur: 6,
+        blur: 3,
         spread: 0,
         offsetX: 0,
         offsetY: 1,
@@ -224,7 +311,7 @@ export const twitterPreset: ThemePreset = {
       fontWeight: {},
       letterSpacing: {},
       fontSize: {},
-      // Spacing (from Vercel dark)
+      // Spacing
       spacing: {
         spacing0: 0,
         spacing3xs: 2,
@@ -237,7 +324,7 @@ export const twitterPreset: ThemePreset = {
         spacing2xl: 36,
         spacing3xl: 48,
       },
-      // Border radius (from Vercel dark)
+      // Border radius
       borderRadius: {
         rounded0: 0,
         rounded3xs: 1,
@@ -250,6 +337,7 @@ export const twitterPreset: ThemePreset = {
         rounded2xl: 14,
         rounded3xl: 16,
         rounded4xl: 20,
+        roundedClickable: 10,
       },
       customCss: darkCustomCss,
     },

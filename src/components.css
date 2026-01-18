@@ -1,62 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap');
 
 /* ==========================================
-   HEADER STYLES
-   ========================================== */
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--crayon-spacing-3xs) var(--crayon-spacing-s);
-  background-color: var(--crayon-background-secondary);
-  border-bottom: 1px solid var(--crayon-stroke-default);
-  height: 56px;
-}
-
-.header__left {
-  display: flex;
-  align-items: center;
-  gap: var(--crayon-spacing-3xs);
-}
-
-.header__logo {
-  font: var(--crayon-font-label-heavy);
-  letter-spacing: var(--crayon-font-label-heavy-letter-spacing);
-  color: var(--crayon-primary-text);
-}
-
-.header__right {
-  display: flex;
-  align-items: center;
-  gap: var(--crayon-spacing-l);
-}
-
-.header__selector-toggle {
-  display: flex;
-  align-items: center;
-  gap: var(--crayon-spacing-3xs);
-}
-
-.header__selector-label {
-  font: var(--crayon-font-label-small);
-  letter-spacing: var(--crayon-font-label-small-letter-spacing);
-  color: var(--crayon-secondary-text);
-}
-
-.header__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--crayon-spacing-3xs);
-}
-
-.header__buttons {
-  display: flex;
-  align-items: center;
-  gap: var(--crayon-spacing-3xs);
-}
-
-/* ==========================================
    SIDEBAR STYLES
    ========================================== */
 

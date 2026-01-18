@@ -295,20 +295,15 @@ export function ColorControls({
       </Section>
 
       <Section title="Chart colors" defaultOpen={false}>
-        <p className="section__description">
-          {chartColors.useDualMode 
-            ? "Two colors: Primary at position 5, Secondary at position 6. Positions 1-4 are opacity variants of primary, 7-10 are opacity variants of secondary."
-            : "Single color at position 6. Positions 1-5 fade in (0.5→0.85), positions 7-10 fade out (0.4→0.1)."}
-        </p>
         <ColorPicker
-          label={chartColors.useDualMode ? "Primary (Position 5)" : "Chart Color (Position 6)"}
+          label={chartColors.useDualMode ? "Primary" : "Chart Color"}
           value={chartColors.primary}
           onChange={(color) => onChartColorChange("primary", color)}
           mode={mode}
         />
         {chartColors.useDualMode && (
           <ColorPicker
-            label="Secondary (Position 6)"
+            label="Secondary"
             value={chartColors.secondary}
             onChange={(color) => onChartColorChange("secondary", color)}
             mode={mode}

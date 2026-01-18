@@ -3,6 +3,7 @@ import { Button, IconButton, SwitchItem, Tabs, TabsList, TabsTrigger } from "@cr
 import { Undo2, Redo2, RotateCcw, Upload, Code2 } from "lucide-react";
 import { toast } from "sonner";
 import { ExportModal } from "./ExportModal";
+import "./Header.css";
 
 interface HeaderProps {
   theme: "light" | "dark";
@@ -81,7 +82,7 @@ export function Header({
           {/* Selector Toggle */}
           <div className="header__selector-toggle">
             <span className="header__selector-label">Selector</span>
-            <SwitchItem
+            <SwitchItem className="header__selector-switch"
               checked={selectorMode}
               onChange={onToggleSelectorMode}
             />
@@ -99,20 +100,20 @@ export function Header({
           <div className="header__actions">
             <IconButton
               icon={<RotateCcw size={16} />}
-              variant="tertiary"
+              variant="secondary"
               onClick={onReset}
               title="Reset"
             />
             <IconButton
               icon={<Undo2 size={16} />}
-              variant="tertiary"
+              variant="secondary"
               onClick={onUndo}
               disabled={!canUndo}
               title="Undo"
             />
             <IconButton
               icon={<Redo2 size={16} />}
-              variant="tertiary"
+              variant="secondary"
               onClick={onRedo}
               disabled={!canRedo}
               title="Redo"
@@ -122,7 +123,7 @@ export function Header({
           {/* Action Buttons */}
           <div className="header__buttons">
             <Button
-              variant="tertiary"
+              variant="secondary"
               onClick={() =>
                 window.open("https://discord.com/invite/Pbv5PsqUSv", "_blank")
               }
@@ -130,7 +131,7 @@ export function Header({
               Join discord
             </Button>
             <Button
-              variant="tertiary"
+              variant="secondary"
               iconRight={<Upload size={14} />}
               onClick={handleShare}
             >
