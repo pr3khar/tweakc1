@@ -50,6 +50,12 @@
   margin-top: 2px;
 }
 
+.crayon-tabs-trigger {
+    min-width: fit-content;
+    padding: 4px 10px;
+}
+
+
 .header__actions {
   display: flex;
   align-items: center;

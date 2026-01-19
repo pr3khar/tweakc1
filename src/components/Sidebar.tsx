@@ -140,11 +140,6 @@ export function Sidebar({
         <div className="custom-tabs__content">
           {value === "colors" && (
             <>
-              <ChatControls
-                chatColors={customization.chatColors}
-                onChatColorChange={onChatColorChange}
-                mode={currentMode}
-              />
               <ColorControls
                 fills={customization.fills || {}}
                 text={customization.text || {}}
@@ -159,6 +154,11 @@ export function Sidebar({
               <StrokeControls
                 strokeColors={customization.strokeColors}
                 onStrokeColorChange={onStrokeColorChange}
+                mode={currentMode}
+              />
+              <ChatControls
+                chatColors={customization.chatColors}
+                onChatColorChange={onChatColorChange}
                 mode={currentMode}
               />
             </>

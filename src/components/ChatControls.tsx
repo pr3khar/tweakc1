@@ -17,28 +17,7 @@ export function ChatControls({
   mode,
 }: ChatControlsProps) {
   return (
-    <Section title="Chat UI Colors" defaultOpen={true}>
-      <ColorPicker
-        label="Container Background"
-        value={chatColors.containerBg}
-        onChange={(color) => onChatColorChange("containerBg", color)}
-        cssVariable="--crayon-chat-container-bg"
-        mode={mode}
-      />
-      <ColorPicker
-        label="Assistant Background"
-        value={chatColors.assistantBg}
-        onChange={(color) => onChatColorChange("assistantBg", color)}
-        cssVariable="--crayon-chat-assistant-response-bg"
-        mode={mode}
-      />
-      <ColorPicker
-        label="Assistant Text"
-        value={chatColors.assistantText}
-        onChange={(color) => onChatColorChange("assistantText", color)}
-        cssVariable="--crayon-chat-assistant-response-text"
-        mode={mode}
-      />
+    <Section title="User message" defaultOpen={false}>
       <ColorPicker
         label="User Background"
         value={chatColors.userBg}

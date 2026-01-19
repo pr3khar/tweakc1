@@ -45,8 +45,8 @@ const lightCustomCss = `${commonCustomCss}
   display: flex;
   flex-direction: column;
   background-color: rgba(0,0,0,0.0);
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.25);
 }
 `;
 
@@ -55,7 +55,7 @@ const darkCustomCss = `${commonCustomCss}
   display: flex;
   flex-direction: column;
   background-color: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.16);
 }
 `;
 

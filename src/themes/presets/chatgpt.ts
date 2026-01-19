@@ -18,29 +18,29 @@ const commonCustomCss = `
 
 const lightCustomCss = `${commonCustomCss}
 .crayon-shell-thread-composer__input-wrapper {
-  padding: 8px;
+  padding: 10px;
   border-radius: 999px;
   padding-left: 16px;
   background-color: rgba(0,0,0,0.03);
 }
 
 .crayon-shell-thread-composer__input-wrapper .crayon-icon-button {
-  height: 40px;
-  width: 40px;
+  height: 36px;
+  width: 36px;
   border-radius: 999px;
 }
 `;
 
 const darkCustomCss = `${commonCustomCss}
 .crayon-shell-thread-composer__input-wrapper {
-  padding: 8px;
+  padding: 10px;
   border-radius: 999px;
   padding-left: 16px;
 }
 
 .crayon-shell-thread-composer__input-wrapper .crayon-icon-button {
-  height: 40px;
-  width: 40px;
+  height: 36px;
+  width: 36px;
   border-radius: 999px;
 }
 `;

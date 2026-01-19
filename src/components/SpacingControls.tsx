@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Slider } from "@crayonai/react-ui";
+import { Slider, Tabs, TabsList, TabsTrigger } from "@crayonai/react-ui";
 import { Section } from "./Section";
 import { ThemeCustomization } from "../types/theme";
 
@@ -386,24 +386,16 @@ export function SpacingControls({
     <>
       <Section title="Border Radius" defaultOpen={true}>
         {/* Custom/Preset Toggle */}
-        <div className="border-radius-tabs">
-          <div className="border-radius-tabs__list">
-            <button
-              className={`border-radius-tabs__trigger ${radiusTabMode === "custom" ? "border-radius-tabs__trigger--active" : ""}`}
-              onClick={() => setRadiusTabMode("custom")}
-            >
-              Custom
-            </button>
-            <button
-              className={`border-radius-tabs__trigger ${radiusTabMode === "preset" ? "border-radius-tabs__trigger--active" : ""}`}
-              onClick={() => setRadiusTabMode("preset")}
-            >
-              Preset
-            </button>
-          </div>
+        <Tabs value={radiusTabMode} onValueChange={(value) => setRadiusTabMode(value as "custom" | "preset")} variant="card">
+          <TabsList>
+            <TabsTrigger value="custom" text="Custom" />
+            <TabsTrigger value="preset" text="Preset" />
+          </TabsList>
+        </Tabs>
 
+        <div style={{ marginTop: 'var(--crayon-spacing-m)' }}>
           {radiusTabMode === "custom" && (
-            <div className="border-radius-tabs__content">
+            <>
               {/* Individual values in two columns */}
               <div className="spacing-grid">
                 {RADIUS_KEYS.map((item) => {
@@ -420,11 +412,11 @@ export function SpacingControls({
                   );
                 })}
               </div>
-            </div>
+            </>
           )}
 
           {radiusTabMode === "preset" && (
-            <div className="border-radius-tabs__content">
+            <>
               {/* Preset selector with discrete slider */}
               <div className="slider-row" style={{ marginBottom: 'var(--crayon-spacing-m)' }}>
                 <div className="slider-row__controls" style={{ width: '100%' }}>
@@ -446,31 +438,23 @@ export function SpacingControls({
               <div className="section-description" style={{ textAlign: 'center' }}>
                 {RADIUS_PRESETS[radiusIndex]?.name || 'Medium'}
               </div>
-            </div>
+            </>
           )}
         </div>
       </Section>
 
       <Section title="Spacing" defaultOpen={false}>
         {/* Custom/Preset Toggle */}
-        <div className="border-radius-tabs">
-          <div className="border-radius-tabs__list">
-            <button
-              className={`border-radius-tabs__trigger ${spacingTabMode === "custom" ? "border-radius-tabs__trigger--active" : ""}`}
-              onClick={() => setSpacingTabMode("custom")}
-            >
-              Custom
-            </button>
-            <button
-              className={`border-radius-tabs__trigger ${spacingTabMode === "preset" ? "border-radius-tabs__trigger--active" : ""}`}
-              onClick={() => setSpacingTabMode("preset")}
-            >
-              Preset
-            </button>
-          </div>
+        <Tabs value={spacingTabMode} onValueChange={(value) => setSpacingTabMode(value as "custom" | "preset")} variant="card">
+          <TabsList>
+            <TabsTrigger value="custom" text="Custom" />
+            <TabsTrigger value="preset" text="Preset" />
+          </TabsList>
+        </Tabs>
 
+        <div style={{ marginTop: 'var(--crayon-spacing-m)' }}>
           {spacingTabMode === "custom" && (
-            <div className="border-radius-tabs__content">
+            <>
               {/* Individual values in two columns */}
               <div className="spacing-grid">
                 {SPACING_KEYS.map((item) => {
@@ -487,11 +471,11 @@ export function SpacingControls({
                   );
                 })}
               </div>
-            </div>
+            </>
           )}
 
           {spacingTabMode === "preset" && (
-            <div className="border-radius-tabs__content">
+            <>
               {/* Preset selector with discrete slider */}
               <div className="slider-row" style={{ marginBottom: 'var(--crayon-spacing-m)' }}>
                 <div className="slider-row__controls" style={{ width: '100%' }}>
@@ -513,7 +497,7 @@ export function SpacingControls({
               <div className="section-description" style={{ textAlign: 'center' }}>
                 {SPACING_PRESETS[spacingIndex]?.name || 'Default'}
               </div>
-            </div>
+            </>
           )}
         </div>
       </Section>
